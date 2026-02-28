@@ -1,0 +1,86 @@
+import { Task, TeamMember, HackathonData } from './types';
+
+export const MOCK_MEMBERS: TeamMember[] = [
+  { id: '1', name: 'Alex Chen', role: 'Full Stack', skillLevel: 'Advanced', avatar: 'https://i.pravatar.cc/150?u=alex', burnoutIndex: 45, workloadHours: 12, completedHours: 8 },
+  { id: '2', name: 'Sarah Miller', role: 'AI', skillLevel: 'Advanced', avatar: 'https://i.pravatar.cc/150?u=sarah', burnoutIndex: 78, workloadHours: 22, completedHours: 4 },
+  { id: '3', name: 'Jordan Lee', role: 'Frontend', skillLevel: 'Intermediate', avatar: 'https://i.pravatar.cc/150?u=jordan', burnoutIndex: 32, workloadHours: 10, completedHours: 15 },
+  { id: '4', name: 'Mia Wong', role: 'Design', skillLevel: 'Intermediate', avatar: 'https://i.pravatar.cc/150?u=mia', burnoutIndex: 15, workloadHours: 8, completedHours: 20 },
+];
+
+export const MOCK_TASKS: Task[] = [
+  {
+    id: 't1',
+    title: 'Setup Vector Database',
+    description: 'Initialize Pinecone and configure index schema for RAG.',
+    status: 'In Progress',
+    assigneeId: '2',
+    estimatedHours: 4,
+    dependencies: [],
+    riskScore: 20,
+    coordinationImpact: 45,
+    progress: 65,
+    deadline: new Date(Date.now() + 5 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: 't2',
+    title: 'Design System Implementation',
+    description: 'Build core UI components using Tailwind and Radix.',
+    status: 'In Progress',
+    assigneeId: '3',
+    estimatedHours: 6,
+    dependencies: [],
+    riskScore: 15,
+    coordinationImpact: 30,
+    progress: 40,
+    deadline: new Date(Date.now() + 8 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: 't3',
+    title: 'API Gateway Auth',
+    description: 'Implement JWT authentication and rate limiting.',
+    status: 'Backlog',
+    assigneeId: '1',
+    estimatedHours: 3,
+    dependencies: ['t1'],
+    riskScore: 40,
+    coordinationImpact: 60,
+    progress: 0,
+    deadline: new Date(Date.now() + 12 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: 't4',
+    title: 'Landing Page Hero',
+    description: 'Create high-impact hero section with 3D elements.',
+    status: 'Completed',
+    assigneeId: '4',
+    estimatedHours: 5,
+    dependencies: [],
+    riskScore: 10,
+    coordinationImpact: 10,
+    progress: 100,
+    deadline: new Date(Date.now() - 2 * 3600 * 1000).toISOString(),
+  },
+  {
+    id: 't5',
+    title: 'LLM Prompt Engineering',
+    description: 'Optimize system prompts for feature extraction.',
+    status: 'Backlog',
+    assigneeId: '2',
+    estimatedHours: 8,
+    dependencies: ['t1'],
+    riskScore: 65,
+    coordinationImpact: 80,
+    progress: 0,
+    deadline: new Date(Date.now() + 15 * 3600 * 1000).toISOString(),
+  }
+];
+
+export const INITIAL_DATA: HackathonData = {
+  teamName: 'Entropy Solvers',
+  hackathonName: 'AI Global Hack 2026',
+  durationHours: 48,
+  startTime: new Date().toISOString(),
+  members: MOCK_MEMBERS,
+  tasks: MOCK_TASKS,
+  featureDescription: 'An AI-powered coordination platform that reduces project entropy by mapping dependencies and balancing workloads in real-time.',
+};
